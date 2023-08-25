@@ -12,17 +12,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div class="flex justify-center items-center w-full ">
+          <div class="w-1/5 h-32 border border-red-500 m-2">1</div>
+          <div class="w-1/5 h-32 border border-red-500 m-2">2</div>
+          <div class="w-1/5 h-32 border border-red-500 m-2">3</div>
+          <div class="w-1/5 h-32 border border-red-500 m-2">4</div>
+          <div class="w-1/5 h-32 border border-red-500 m-2">5</div>
+        </div>
       </header>
     </div>
   );
