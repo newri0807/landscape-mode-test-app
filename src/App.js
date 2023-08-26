@@ -5,25 +5,39 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 모바일 기기에서 페이지 로딩 후 주소창을 숨기기 위해 스크롤
-    if (window.innerWidth < 768) {
-      window.scrollTo(0, 1);
-    }
+    // 모바일 웹 주소창 숨기기
+    window.addEventListener(
+      "load",
+      function() {
+        // body의 height를 살짝 늘리는 코드
+        document.body.style.height =
+          document.documentElement.clientHeight + 5 + "px";
+        // scroll를 제어하는 코드
+        setTimeout(() => window.scrollTo(0, 1), 0);
+      },
+      false
+    );
   }, []);
 
   const [showPopup, setShowPopup] = useState(true); // 팝업을 보여줄지 여부를 결정하는 state
 
   const handleConfirm = () => {
-    if (screenfull.isEnabled) {
-      screenfull
-        .request()
-        .then(() => {
-          setShowPopup(false); // 풀스크린 모드로 전환 후 팝업 숨김
-        })
-        .catch((err) => {
-          console.error(err);
-          setShowPopup(false); // 에러가 발생하면 팝업을 숨깁니다.
-        });
+    // if (screenfull.isEnabled) {
+    //   screenfull
+    //     .request()
+    //     .then(() => {
+    //       setShowPopup(false); // 풀스크린 모드로 전환 후 팝업 숨김
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //       setShowPopup(false); // 에러가 발생하면 팝업을 숨깁니다.
+    //     });
+    // }
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setShowPopup(false);
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
     }
   };
 
@@ -51,7 +65,7 @@ function App() {
   }, [location]);
 
   return (
-    <div className="relative min-h-screen flex justify-center ">
+    <div className="relative min-h-screen flex justify-center z-10">
       <div className="App">
         <Outlet />
       </div>
