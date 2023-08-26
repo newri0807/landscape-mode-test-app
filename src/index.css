@@ -56,6 +56,7 @@ code {
 }
 
 @media (orientation: portrait) {
+  /* 기본 설정 */
   html {
     transform: rotate(-90deg);
     transform-origin: top left;
@@ -64,13 +65,25 @@ code {
     left: 0;
     width: 100vh;
     height: 100vw;
+    /* overflow: hidden; */
+    overflow-y: auto;
   }
   .App {
     width: 100vh;
     height: 100vw;
     position: relative;
+    /* overflow: hidden; */
+    overflow-y: auto;
+    width: 100%;
+  }
+  .overflowHidden {
+    overflow: hidden;
   }
   .App-header {
     min-height: 100%;
+  }
+  /* 챗봇 */
+  .rsc > div {
+    width: 350px !important;
   }
 }
