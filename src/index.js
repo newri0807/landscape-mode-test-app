@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Chat from "./Chat";
+import Main from "./Main";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -12,11 +13,13 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <div>Error Page 😭</div>,
-    children: [{ index: true, path: "/", element: <App /> }],
-  },
-  {
-    path: "/chat",
-    element: <Chat />,
+    children: [
+      { index: true, path: "/", element: <Main /> },
+      {
+        path: "/chat",
+        element: <Chat />,
+      },
+    ],
   },
 ]);
 root.render(<RouterProvider router={router} />);

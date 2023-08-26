@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
-import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import screenfull from "screenfull";
 function App() {
   const navigate = useNavigate();
 
@@ -10,6 +10,22 @@ function App() {
       window.scrollTo(0, 1);
     }
   }, []);
+
+  const [showPopup, setShowPopup] = useState(true); // 팝업을 보여줄지 여부를 결정하는 state
+
+  const handleConfirm = () => {
+    if (screenfull.isEnabled) {
+      screenfull
+        .request()
+        .then(() => {
+          setShowPopup(false); // 풀스크린 모드로 전환 후 팝업 숨김
+        })
+        .catch((err) => {
+          console.error(err);
+          setShowPopup(false); // 에러가 발생하면 팝업을 숨깁니다.
+        });
+    }
+  };
 
   const location = useLocation();
 
@@ -35,24 +51,23 @@ function App() {
   }, [location]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div class="flex justify-center items-center w-full ">
-          <div class="w-1/5 h-32 border border-red-500 m-2">1</div>
-          <div class="w-1/5 h-32 border border-red-500 m-2">2</div>
-          <div
-            class="w-1/5 h-32 border border-red-500 m-2 cursor-pointer"
-            onClick={() => {
-              navigate("/chat");
-            }}
+    <div className="relative min-h-screen flex justify-center ">
+      <div className="App">
+        <Outlet />
+      </div>
+      {showPopup && location.pathname === "/" && (
+        <div className="z-9999 p-6 bg-white rounded-lg shadow-xl absolute flex justify-center flex-wrap top-[18%]">
+          <p className="text-lg mb-4 text-center w-full">
+            풀스크린 모드로 전환하시겠습니까?
+          </p>
+          <button
+            onClick={handleConfirm}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-700"
           >
-            3
-          </div>
-          <div class="w-1/5 h-32 border border-red-500 m-2">4</div>
-          <div class="w-1/5 h-32 border border-red-500 m-2">5</div>
+            확인
+          </button>
         </div>
-      </header>
+      )}
     </div>
   );
 }
