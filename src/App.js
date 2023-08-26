@@ -65,12 +65,12 @@ function App() {
   }, [location]);
 
   return (
-    <div className="relative min-h-screen flex justify-center z-10">
+    <div className="relative">
       <div className="App">
         <Outlet />
       </div>
       {showPopup && location.pathname === "/" && (
-        <div className="z-9999 p-6 bg-white rounded-lg shadow-xl absolute flex justify-center flex-wrap top-[18%]">
+        <div className="z-50 p-6 bg-white rounded-lg shadow-xl absolute flex justify-center flex-wrap top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <p className="text-lg mb-4 text-center w-full">
             풀스크린 모드로 전환하시겠습니까?
           </p>
