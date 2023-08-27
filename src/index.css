@@ -78,7 +78,7 @@ code {
     width: 100%;
   }
   .overflowHidden {
-    overflow: hidden;
+    overflow: hidden !important;
   }
   .App-header {
     min-height: 100%;
@@ -87,4 +87,11 @@ code {
   .rsc > div {
     width: 350px !important;
   }
+}
+
+@media (orientation: landscape) {
+  /* Landscape 모드일 때 적용할 CSS */
+  /* html {
+    overflow: hidden;
+  } */
 }
