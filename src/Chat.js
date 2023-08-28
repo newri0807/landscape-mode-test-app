@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
@@ -78,19 +77,17 @@ function Chat() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        Chat
-        <ThemeProvider theme={theme}>
-          <ChatBot
-            steps={steps}
-            hideHeader={true}
-            placeholder={"입력해주세요"}
-            className="text-black"
-          />
-        </ThemeProvider>
-      </header>
-    </div>
+    <header className="App-header">
+      Chat
+      <ThemeProvider theme={theme}>
+        <ChatBot
+          steps={steps}
+          hideHeader={true}
+          placeholder={"입력해주세요"}
+          className="text-black"
+        />
+      </ThemeProvider>
+    </header>
   );
 }
 

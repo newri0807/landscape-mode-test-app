@@ -33,7 +33,9 @@ code {
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-image: url("../public/img/mainhall.jpg");
+  background-size: contain;
+  background-repeat: no-repeat; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,6 +56,45 @@ code {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* people png Animaiton CSS */
+@keyframes slowMoveX {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* 이동할 거리를 조정하세요 */
+  }
+  100% {
+    transform: translateX(0); /* 이동할 거리를 조정하세요 */
+  }
+}
+
+@keyframes slowMoveY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px); /* 이동할 거리를 조정하세요 */
+  }
+  100% {
+    transform: translateY(0); /* 이동할 거리를 조정하세요 */
+  }
+}
+
+.slow-motionX-box {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  animation: slowMoveX 3.8s ease-in-out infinite; /* 애니메이션 속성 설정 */
+}
+
+.slow-motionY-box {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  animation: slowMoveY 3.5s ease-in-out infinite; /* 애니메이션 속성 설정 */
 }
 
 @media (orientation: portrait) {
@@ -91,6 +132,7 @@ code {
 
 @media (orientation: landscape) {
   /* Landscape 모드일 때 적용할 CSS */
+
   /* html {
     overflow: hidden;
   } */

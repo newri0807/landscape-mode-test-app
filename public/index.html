@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="전립선암 인식 증진을 위한 블루리본 캠페인"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -28,7 +28,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>블루리본 캠페인</title>
+    <!-- <style>
+      /* Modify the style of .kakao class here */
+      .kakao {
+        float: unset;
+        width: 100%;
+      }
+    </style> -->
+    <script src="//t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -44,4 +53,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    $(function() {
+      $("img[usemap]").rwdImageMaps();
+    });
+  </script>
 </html>
